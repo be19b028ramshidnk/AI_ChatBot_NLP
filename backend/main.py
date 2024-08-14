@@ -68,8 +68,8 @@ def complete_the_order(parameters: dict, session_id: str):
             order_total = db_helper.get_total_order_price(order_id)
 
             fulfillment_text = f"Awesome. We have placed your order. " \
-                               f"Here is your order id # {order_id}. " \
-                               f"Your order total is {order_total} which you can pay at the time of delivery!"
+                               f" with order id # {order_id}.Keep this for order tracking. " \
+                               f"Your order total is {order_total} which you can pay at the time of delivery. Thank You. Have a nice day!"
 
         del inprogress_orders[session_id]
 
@@ -131,7 +131,7 @@ def remove_from_order(parameters: dict, session_id: str):
         fulfillment_text += " Your order is empty!"
     else:
         order_str = helper.get_str_from_food_dict(current_order)
-        fulfillment_text += f" Here is what is left in your order: {order_str}"
+        fulfillment_text += f" Here is what is left in your order: {order_str}. Do you want to add/remove anything else"
 
     return JSONResponse(content={
         "fulfillmentText": fulfillment_text
@@ -142,9 +142,9 @@ def track_order(parameters: dict, session_id: str):
     order_id = int(parameters['order_id'])
     order_status = db_helper.get_order_status(order_id)
     if order_status:
-        fulfillment_text = f"The order status for order id: {order_id} is: {order_status}"
+        fulfillment_text = f"The order status for order id: {order_id} is: {order_status}. Have a nice day!"
     else:
-        fulfillment_text = f"No order found with order id: {order_id}"
+        fulfillment_text = f"No order found with order id: {order_id}. If you want to place an order, please type New Order"
 
     return JSONResponse(content={
         "fulfillmentText": fulfillment_text
