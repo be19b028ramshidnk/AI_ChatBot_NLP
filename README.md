@@ -1,10 +1,10 @@
 # AI Chat Bot using Dialogflow - End to End NLP Project
-
+![alt text](image.png)
 ## Scope of Work (SOW)
 This chat bot will help to,
 * Create new order
 * Track the order
-
+![alt text](image-1.png)
 ## Chatbot Plantform Selection
 * Dialogflow
 
